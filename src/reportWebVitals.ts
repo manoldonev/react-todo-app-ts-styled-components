@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-floating-promises, @typescript-eslint/prefer-readonly-parameter-types */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import type { ReportHandler } from 'web-vitals';
 
 const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
@@ -14,4 +14,4 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
 };
 
 export default reportWebVitals;
-/* eslint-enable @typescript-eslint/no-floating-promises, @typescript-eslint/prefer-readonly-parameter-types */
+/* eslint-enable @typescript-eslint/no-floating-promises */
