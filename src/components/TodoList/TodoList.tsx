@@ -1,7 +1,8 @@
 import styled from 'styled-components/macro';
 import { useTodoState } from '../../context/todo';
+import TodoItem from './TodoItem';
 
-const StyledSection = styled.section`
+const Section = styled.section`
   background-color: #fff;
   padding: 2rem 2rem 1rem 2rem;
   border: 0.1rem solid #ddd;
@@ -13,24 +14,20 @@ const StyledSection = styled.section`
 `;
 
 const StyledList = styled.ul`
-  margin: 1rem 0;
-  padding: 1rem;
-  border-radius: 0;
-  background: #f2f2f2;
-  border: 1px solid rgba(229, 229, 229, 0.5);
-  color: #888;
+  list-style-type: none;
+  padding-left: 0;
 `;
 
 export default function TodoList(): JSX.Element {
   const { items } = useTodoState();
 
   return (
-    <StyledSection>
+    <Section>
       <StyledList>
         {items.map((item) => (
-          <ul key={item.id}>{item.text}</ul>
+          <TodoItem key={item.id} data={item} />
         ))}
       </StyledList>
-    </StyledSection>
+    </Section>
   );
 }

@@ -32,6 +32,20 @@ function todoReducer(state: TodoState, action: Action): TodoState {
         draft.items.push(createNew({ id: nextId, text: action.payload }));
       });
     }
+    case ActionType.ToggleItem: {
+      const itemId = action.payload;
+      if (!itemId) {
+        throw new Error(`${action.type}: item id not specified`);
+      }
+
+      return produce(state, (draft) => {
+        const itemToToggle = draft.items.find((item) => item.id === itemId);
+        if (itemToToggle == null) {
+          throw new Error(`${action.type}: item with id ${itemId} not found`);
+        }
+        itemToToggle.done = !itemToToggle.done;
+      });
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }

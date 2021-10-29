@@ -17,14 +17,12 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "plugin:react/recommended",
     "plugin:react/jsx-runtime", // Using new JSX transform from React 17 so disable relevant rules
-    "plugin:react-hooks/recommended",
     "plugin:jest/recommended",
     "plugin:testing-library/react",
-    "plugin:jsx-a11y/recommended",
     "prettier",
-    "plugin:prettier/recommended" // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    // Make sure this is always the last configuration in the extends array
+    "plugin:prettier/recommended" // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors.
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -36,14 +34,10 @@
     "project": "./tsconfig.json"
   },
   "plugins": [
-    "react",
-    "react-hooks",
-    "jest",
-    "testing-library",
-    "jsx-a11y",
-    "import",
     "@typescript-eslint",
-    "eslint-comments"
+    "testing-library",
+    "react",
+    "jsx-a11y"
   ],
   "root": true, // For configuration cascading
   "rules": {
@@ -55,7 +49,12 @@
     ],
     // "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/consistent-type-imports": "error",
-    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowExpressions": true
+      }
+    ],
     "@typescript-eslint/member-delimiter-style": "error",
     "@typescript-eslint/method-signature-style": "error",
     "@typescript-eslint/no-confusing-non-null-assertion": "error",
@@ -91,6 +90,15 @@
       "error",
       {
         "ignoreFunctionalComponents": true
+      }
+    ],
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "ignoreRefs": true,
+        "allowArrowFunctions": true,
+        "allowFunctions": true,
+        "ignoreDOMComponents": true
       }
     ]
   },
