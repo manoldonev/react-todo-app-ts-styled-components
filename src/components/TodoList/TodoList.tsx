@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import { useTodoState } from '../../context/todo';
 import TodoItem from './TodoItem';
+import Header from './Header';
 
 const Section = styled.section`
   background-color: #fff;
@@ -24,6 +25,8 @@ export default function TodoList(): JSX.Element {
   return (
     <Section>
       <StyledList>
+        <Header />
+
         {items.map((item) => (
           <TodoItem key={item.id} data={item} />
         ))}
