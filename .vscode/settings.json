@@ -2,5 +2,6 @@
     "typescript.tsdk": "node_modules/typescript/lib",
     "editor.formatOnSave": true,
     "files.eol": "\n",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "prettier.configPath": ".prettierrc"
 }

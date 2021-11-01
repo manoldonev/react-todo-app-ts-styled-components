@@ -4,6 +4,7 @@ import TodoItem from './TodoItem';
 import Header from './Header';
 import Footer from './Footer';
 import { applyFilter } from '../../services/filter';
+import InputBox from './InputBox';
 
 const Section = styled.section`
   background-color: #fff;
@@ -51,6 +52,7 @@ export default function TodoList(): JSX.Element {
   return (
     <Section>
       <Header />
+      <InputBox />
 
       {listContent}
 
