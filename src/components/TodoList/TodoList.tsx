@@ -5,6 +5,8 @@ import Header from './Header';
 import Footer from './Footer';
 import { filter, search } from '../../services/filter';
 import InputToggle from './InputToggle';
+import useTodoKeyboardShortcuts from './useTodoKeyboardShortcuts';
+import Info from './Info';
 
 const Section = styled.section`
   background-color: #fff;
@@ -36,6 +38,8 @@ export default function TodoList(): JSX.Element {
   const filteredItems = filter(search(items, query), filterMode);
   const itemCount = filteredItems.length;
 
+  useTodoKeyboardShortcuts();
+
   let listContent;
   if (filteredItems.length === 0) {
     listContent = <Paragraph>There are no items.</Paragraph>;
@@ -51,12 +55,15 @@ export default function TodoList(): JSX.Element {
 
   return (
     <Section>
-      <Header />
-      <InputToggle mode={inputMode} query={query} />
+      <>
+        <Header />
+        <InputToggle mode={inputMode} query={query} />
 
-      {listContent}
+        {listContent}
 
-      <Footer count={itemCount} filterMode={filterMode} inputMode={inputMode} />
+        <Footer count={itemCount} filterMode={filterMode} inputMode={inputMode} />
+      </>
+      <Info mode={inputMode} />
     </Section>
   );
 }
