@@ -35,7 +35,7 @@ export default function Footer({
   return (
     <StyledFooter>
       <ActionList mode={inputMode} />
-      <TextWrapper>
+      <TextWrapper data-testid="counter">
         <Counter>{count}</Counter>
         {' items left'}
       </TextWrapper>
