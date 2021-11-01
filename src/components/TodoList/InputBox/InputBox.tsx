@@ -3,9 +3,8 @@ import { useState } from 'react';
 import styled from 'styled-components/macro';
 import { ActionType, useTodoDispatch } from '../../../context/todo';
 
-const StyledInput = styled.input.attrs({
+export const StyledInput = styled.input.attrs({
   type: 'text',
-  placeholder: 'Add New',
 })`
   display: block;
   width: 100%;
@@ -32,6 +31,7 @@ export default function InputBox(): JSX.Element {
   // prettier-ignore
   return (
     <StyledInput
+      placeholder="Add New"
       value={value}
       onChange={(e) => setValue(e.target.value)}
       onKeyUp={handleKeyUp}

@@ -1,5 +1,7 @@
 import styled from 'styled-components/macro';
 import type { FilterMode } from '../../../services/filter';
+import type InputMode from '../../../services/mode';
+import ActionList from '../ActionList';
 import Filter from '../Filter';
 
 const StyledFooter = styled.div`
@@ -21,14 +23,23 @@ const Counter = styled.span`
   font-weight: bold;
 `;
 
-export default function Footer({ count, filter }: { count: number; filter: FilterMode }): JSX.Element {
+export default function Footer({
+  count,
+  filterMode,
+  inputMode,
+}: {
+  count: number;
+  filterMode: FilterMode;
+  inputMode: InputMode;
+}): JSX.Element {
   return (
     <StyledFooter>
+      <ActionList mode={inputMode} />
       <TextWrapper>
         <Counter>{count}</Counter>
         {' items left'}
       </TextWrapper>
-      <Filter filter={filter} />
+      <Filter mode={filterMode} />
     </StyledFooter>
   );
 }

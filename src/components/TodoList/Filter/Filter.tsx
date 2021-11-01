@@ -33,7 +33,7 @@ const Button = styled.button.attrs({ type: 'button' })<{ active: boolean }>`
   `}
 `;
 
-export default function Filter({ filter }: { filter: FilterMode }): JSX.Element {
+export default function Filter({ mode }: { mode: FilterMode }): JSX.Element {
   const dispatch = useTodoDispatch();
 
   function toggleFilter(key: string): void {
@@ -44,7 +44,7 @@ export default function Filter({ filter }: { filter: FilterMode }): JSX.Element 
     <FilterList>
       {Object.entries(FilterMode).map(([key, value]) => (
         <FilterItem key={key}>
-          <Button active={value === filter} onClick={() => toggleFilter(key)}>
+          <Button active={value === mode} onClick={() => toggleFilter(key)}>
             {value}
           </Button>
         </FilterItem>

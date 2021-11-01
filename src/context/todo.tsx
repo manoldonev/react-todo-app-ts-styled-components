@@ -3,6 +3,7 @@ import produce from 'immer';
 import { createNew, getAll } from '../services/todo';
 import type { DataItem } from '../services/todo';
 import { FilterMode } from '../services/filter';
+import InputMode from '../services/mode';
 
 interface Action {
   type: ActionType;
@@ -11,7 +12,9 @@ interface Action {
 
 interface TodoState {
   items: DataItem[];
-  filter: FilterMode;
+  filterMode: FilterMode;
+  inputMode: InputMode;
+  query: string;
 }
 
 const enum ActionType {
@@ -32,6 +35,11 @@ function todoReducer(state: TodoState, action: Action): TodoState {
 
       return produce(state, (draft: TodoState) => {
         draft.items.push(createNew({ id: nextId, text: action.payload }));
+      });
+    }
+    case ActionType.SearchItem: {
+      return produce(state, (draft) => {
+        draft.query = action.payload;
       });
     }
     case ActionType.ToggleItem: {
@@ -55,11 +63,26 @@ function todoReducer(state: TodoState, action: Action): TodoState {
       }
 
       return produce(state, (draft) => {
-        draft.filter = FilterMode[filterKey as keyof typeof FilterMode];
+        draft.filterMode = FilterMode[filterKey as keyof typeof FilterMode];
+      });
+    }
+    case ActionType.ToggleMode: {
+      const inputMode = parseInt(action.payload, 10);
+      if (!(inputMode in InputMode)) {
+        throw new Error(`${action.type}: input mode ${inputMode} not recognized`);
+      }
+
+      return produce(state, (draft) => {
+        if (draft.inputMode !== inputMode) {
+          draft.inputMode = inputMode;
+          draft.query = '';
+          draft.filterMode = FilterMode.All;
+        }
+        return draft;
       });
     }
     default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
+      throw new Error(`Unhandled action type`);
     }
   }
 }
@@ -72,7 +95,12 @@ function TodoProvider({
   reducer?: (state: TodoState, action: Action) => TodoState;
 }): JSX.Element {
   const items = getAll();
-  const [state, dispatch] = useReducer(reducer, { items, filter: FilterMode.All });
+  const [state, dispatch] = useReducer(reducer, {
+    items,
+    filterMode: FilterMode.All,
+    inputMode: InputMode.Add,
+    query: '',
+  });
 
   return (
     <TodoStateContext.Provider value={state}>

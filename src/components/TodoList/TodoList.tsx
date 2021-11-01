@@ -3,8 +3,8 @@ import { useTodoState } from '../../context/todo';
 import TodoItem from './TodoItem';
 import Header from './Header';
 import Footer from './Footer';
-import { applyFilter } from '../../services/filter';
-import InputBox from './InputBox';
+import { filter, search } from '../../services/filter';
+import InputToggle from './InputToggle';
 
 const Section = styled.section`
   background-color: #fff;
@@ -32,8 +32,8 @@ const Paragraph = styled.p`
 `;
 
 export default function TodoList(): JSX.Element {
-  const { items, filter } = useTodoState();
-  const filteredItems = applyFilter(items, filter);
+  const { items, filterMode, inputMode, query } = useTodoState();
+  const filteredItems = filter(search(items, query), filterMode);
   const itemCount = filteredItems.length;
 
   let listContent;
@@ -52,11 +52,11 @@ export default function TodoList(): JSX.Element {
   return (
     <Section>
       <Header />
-      <InputBox />
+      <InputToggle mode={inputMode} query={query} />
 
       {listContent}
 
-      <Footer count={itemCount} filter={filter} />
+      <Footer count={itemCount} filterMode={filterMode} inputMode={inputMode} />
     </Section>
   );
 }
