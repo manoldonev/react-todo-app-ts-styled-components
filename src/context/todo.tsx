@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import produce from 'immer';
 import { createNew, getAll } from '../services/todo';
 import type { DataItem } from '../services/todo';
+import { FilterMode } from '../services/filter';
 
 interface Action {
   type: ActionType;
@@ -10,6 +11,7 @@ interface Action {
 
 interface TodoState {
   items: DataItem[];
+  filter: FilterMode;
 }
 
 const enum ActionType {
@@ -46,6 +48,16 @@ function todoReducer(state: TodoState, action: Action): TodoState {
         itemToToggle.done = !itemToToggle.done;
       });
     }
+    case ActionType.ToggleFilter: {
+      const filterKey = action.payload;
+      if (!(filterKey in FilterMode)) {
+        throw new Error(`${action.type}: filter ${filterKey} not found`);
+      }
+
+      return produce(state, (draft) => {
+        draft.filter = FilterMode[filterKey as keyof typeof FilterMode];
+      });
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -60,7 +72,7 @@ function TodoProvider({
   reducer?: (state: TodoState, action: Action) => TodoState;
 }): JSX.Element {
   const items = getAll();
-  const [state, dispatch] = useReducer(reducer, { items });
+  const [state, dispatch] = useReducer(reducer, { items, filter: FilterMode.All });
 
   return (
     <TodoStateContext.Provider value={state}>

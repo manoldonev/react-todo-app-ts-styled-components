@@ -2,6 +2,8 @@ import styled from 'styled-components/macro';
 import { useTodoState } from '../../context/todo';
 import TodoItem from './TodoItem';
 import Header from './Header';
+import Footer from './Footer';
+import { applyFilter } from '../../services/filter';
 
 const Section = styled.section`
   background-color: #fff;
@@ -19,18 +21,40 @@ const StyledList = styled.ul`
   padding-left: 0;
 `;
 
+const Paragraph = styled.p`
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0;
+  background: #f2f2f2;
+  border: 1px solid rgba(229, 229, 229, 0.5);
+  color: #888;
+`;
+
 export default function TodoList(): JSX.Element {
-  const { items } = useTodoState();
+  const { items, filter } = useTodoState();
+  const filteredItems = applyFilter(items, filter);
+  const itemCount = filteredItems.length;
 
-  return (
-    <Section>
-      <StyledList>
-        <Header />
-
-        {items.map((item) => (
+  let listContent;
+  if (filteredItems.length === 0) {
+    listContent = <Paragraph>There are no items.</Paragraph>;
+  } else {
+    listContent = (
+      <StyledList data-testid="todo-list">
+        {filteredItems.map((item) => (
           <TodoItem key={item.id} data={item} />
         ))}
       </StyledList>
+    );
+  }
+
+  return (
+    <Section>
+      <Header />
+
+      {listContent}
+
+      <Footer count={itemCount} filter={filter} />
     </Section>
   );
 }

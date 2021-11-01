@@ -100,6 +100,15 @@
         "allowFunctions": true,
         "ignoreDOMComponents": true
       }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsForRegex": [
+          "^draft"
+        ]
+      }
     ]
   },
   "settings": {
