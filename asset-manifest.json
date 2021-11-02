@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-todo-app-ts-styled-components/static/css/main.4be4fc5e.chunk.css",
+    "main.js": "/react-todo-app-ts-styled-components/static/js/main.29d434a9.chunk.js",
+    "main.js.map": "/react-todo-app-ts-styled-components/static/js/main.29d434a9.chunk.js.map",
+    "runtime-main.js": "/react-todo-app-ts-styled-components/static/js/runtime-main.ada9af8b.js",
+    "runtime-main.js.map": "/react-todo-app-ts-styled-components/static/js/runtime-main.ada9af8b.js.map",
+    "static/js/2.eafc47bf.chunk.js": "/react-todo-app-ts-styled-components/static/js/2.eafc47bf.chunk.js",
+    "static/js/2.eafc47bf.chunk.js.map": "/react-todo-app-ts-styled-components/static/js/2.eafc47bf.chunk.js.map",
+    "static/js/3.94eb4ae9.chunk.js": "/react-todo-app-ts-styled-components/static/js/3.94eb4ae9.chunk.js",
+    "static/js/3.94eb4ae9.chunk.js.map": "/react-todo-app-ts-styled-components/static/js/3.94eb4ae9.chunk.js.map",
+    "index.html": "/react-todo-app-ts-styled-components/index.html",
+    "static/css/main.4be4fc5e.chunk.css.map": "/react-todo-app-ts-styled-components/static/css/main.4be4fc5e.chunk.css.map",
+    "static/js/2.eafc47bf.chunk.js.LICENSE.txt": "/react-todo-app-ts-styled-components/static/js/2.eafc47bf.chunk.js.LICENSE.txt",
+    "static/media/add.5451be43.svg": "/react-todo-app-ts-styled-components/static/media/add.5451be43.svg",
+    "static/media/search.efb43b79.svg": "/react-todo-app-ts-styled-components/static/media/search.efb43b79.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ada9af8b.js",
+    "static/js/2.eafc47bf.chunk.js",
+    "static/css/main.4be4fc5e.chunk.css",
+    "static/js/main.29d434a9.chunk.js"
+  ]
+}
