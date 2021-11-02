@@ -19,39 +19,6 @@ interface KeyMapping {
 
 const blacklistedTargets = ['input', 'textarea'];
 
-function keysReducer(state: KeyMapping, action: Action): KeyMapping {
-  switch (action.type) {
-    case ActionType.Keydown: {
-      return produce(state, (draft) => {
-        if (action.key == null) {
-          throw new Error(`${action.type}: missing key`);
-        }
-
-        draft[action.key] = true;
-      });
-    }
-    case ActionType.Keyup: {
-      return produce(state, (draft) => {
-        if (action.key == null) {
-          throw new Error(`${action.type}: missing key`);
-        }
-
-        draft[action.key] = false;
-      });
-    }
-    case ActionType.Reset: {
-      if (action.payload == null) {
-        throw new Error(`${action.type}: missing payload`);
-      }
-
-      return { ...action.payload };
-    }
-    default: {
-      return state;
-    }
-  }
-}
-
 function useKeyboardShortcut(shortcutKeys: string[], callback: (keys: KeyMapping) => void): void {
   if (!shortcutKeys.length) {
     throw new Error(
@@ -122,6 +89,39 @@ function useKeyboardShortcut(shortcutKeys: string[], callback: (keys: KeyMapping
     window.addEventListener('keyup', handleKeyup, true);
     return () => window.removeEventListener('keyup', handleKeyup, true);
   }, [handleKeyup]);
+}
+
+function keysReducer(state: KeyMapping, action: Action): KeyMapping {
+  switch (action.type) {
+    case ActionType.Keydown: {
+      return produce(state, (draft) => {
+        if (action.key == null) {
+          throw new Error(`${action.type}: missing key`);
+        }
+
+        draft[action.key] = true;
+      });
+    }
+    case ActionType.Keyup: {
+      return produce(state, (draft) => {
+        if (action.key == null) {
+          throw new Error(`${action.type}: missing key`);
+        }
+
+        draft[action.key] = false;
+      });
+    }
+    case ActionType.Reset: {
+      if (action.payload == null) {
+        throw new Error(`${action.type}: missing payload`);
+      }
+
+      return { ...action.payload };
+    }
+    default: {
+      return state;
+    }
+  }
 }
 
 export default useKeyboardShortcut;
