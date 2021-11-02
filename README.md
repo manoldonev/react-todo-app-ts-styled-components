@@ -1,6 +1,30 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and represents a simple TypeScript todo web app implemented with React and Styled Components.
+
+## Deployment
+
+The current state of the application can be explored at https://manoldonev.github.io/react-todo-app-ts-styled-components.
+
+## State Management
+
+State management is implemented via the state reducer pattern and is based on the concepts of React Hooks and React Context.
+
+## Styling
+
+The styling of the application is based on a combination of CSS and Styled Components with the following goals in mind:
+
+- Modularity
+- Readability
+- Maintainability
+
+## Type Checking
+
+The app is written in TypeScript and utilizes the strict built-in typechecking capabilites of the language.
+
+## Testing
+
+The app is relatively simple so testing is performed on the `App` component level (and not on the building blocks) and relies on a combination of Jest and the React Testing Library.
 
 ## Available Scripts
 
@@ -28,6 +52,14 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run lint`
+
+Executes static code analysis against an extended ESLint ruleset that is defined in the root `.eslintrc` file.
+
+### `npm run lint:fix`
+
+Executes basic static code analysis against an extended ESLint ruleset that is defined in the root `.eslintrc` file and tries to autofix any errors encountered during the process.
 
 ### `npm run eject`
 
