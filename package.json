@@ -41,7 +41,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint --fix --ext src/**/*.{ts,tsx}",
-    "test:related": "npm run test -- --bail --watchAll=false --findRelatedTests src/**/*.ts --passWithNoTests",
+    "test:related": "npm run test -- --bail --watchAll=false --findRelatedTests src/**/*.{ts,tsx} --passWithNoTests",
     "prepare": "husky install"
   },
   "browserslist": {
