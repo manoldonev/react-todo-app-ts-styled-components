@@ -18,9 +18,9 @@ The styling of the application is based on a combination of CSS and Styled Compo
 - Readability
 - Maintainability
 
-## Type Checking
+## Type Checking & Robustness
 
-The app is written in TypeScript and utilizes the strict built-in typechecking capabilites of the language.
+The app utilizes the strict built-in typechecking capabilities of TypeScript, and a combination of ESlint, Prettier, lint-staged, and husky to minimize run-time exceptions, ensure consistent code style and quality, and prevent noncompliant code from reaching source control in the first place.
 
 ## Testing
 
