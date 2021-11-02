@@ -20,7 +20,9 @@
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-prettier": "^4.0.0",
     "gh-pages": "^3.2.3",
+    "husky": "^7.0.4",
     "immer": "^9.0.6",
+    "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -38,7 +40,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{ts,tsx}",
-    "lint:fix": "eslint --fix --ext src/**/*.{ts,tsx}"
+    "lint:fix": "eslint --fix --ext src/**/*.{ts,tsx}",
+    "test:related": "npm run test -- --bail --watchAll=false --findRelatedTests src/**/*.ts --passWithNoTests",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
