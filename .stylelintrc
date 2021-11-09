@@ -1,3 +1,4 @@
+# prettier-ignore
 {
   "customSyntax":"@stylelint/postcss-css-in-js",
   "processors": [
@@ -6,5 +7,8 @@
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-styled-components"
-  ]
+  ],
+  "rules": {
+		"font-family-name-quotes": "always-where-recommended",
+	}
 }
