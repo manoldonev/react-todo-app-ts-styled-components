@@ -1,3 +1,5 @@
+![ci workflow](https://github.com/manoldonev/react-todo-app-ts-styled-components/actions/workflows/main.yml/badge.svg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and represents a simple TypeScript todo web app implemented with React and Styled Components.
